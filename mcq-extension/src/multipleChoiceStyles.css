@@ -1,0 +1,168 @@
+* {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Makes it so that explicit width/height dimensions automatically add padding and border, not just content*/
+  }
+  
+  .site-container {
+    margin: 0px auto;
+    width: 80%;
+    margin-top: 2em;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .green {
+    color: green;
+  }
+  
+  .red,
+  .warning {
+    color: red;
+  }
+  
+  .active-btn {
+    background-color: #a3c8ec !important;
+  }
+  
+  .btn:hover {
+    cursor: pointer;
+    background-color: #a3c8ec;
+  }
+  
+  p {
+    margin-bottom: 1em;
+  }
+  
+  /* =============================== App styling =============================== */
+  .web-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .toggle-button {
+    margin: 1em;
+  }
+  
+  .btn {
+    font-size: 16px;
+    padding: 0.5em;
+    border: 1.5px solid #515151;
+    border-radius: 8px;
+  }
+  
+  .active-btn {
+    background-color: #a3c8ec !important;
+  }
+  
+  .btn:hover {
+    cursor: pointer;
+    background-color: #a3c8ec;
+  }
+  
+  .hover-editable {
+    cursor: pointer;
+  }
+  
+  .tgl-btn {
+    margin-right: 1em;
+  }
+  
+  .tgl-btn > :last-of-type {
+    margin-right: 0;
+  }
+  
+  /* =============================== Component =============================== */
+  .mcq-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    margin-bottom: 1em;
+    background-color: #e0f1f7;
+    border-radius: 8px;
+  }
+  
+  .mcq-form {
+    margin: 1em 1em 0 1em;
+  }
+  
+  .question {
+    margin-bottom: 1em;
+  }
+  
+  .response-list {
+    margin: 1em 0;
+  }
+  
+  .response-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .response-group-wrapper {
+    display: flex;
+    flex-direction: row;
+    vertical-align: top;
+    margin-bottom: 0.5em;
+  }
+  
+  .response-group {
+    display: row;
+    flex-direction: column;
+    width: 100%;
+    margin-left: .5em;
+  }
+  
+  .text-box {
+    width: 80%;
+  }
+  
+  .explanation {
+    margin-bottom: 0;
+  }
+  
+  .inline-btn {
+    padding: 0.25em 0.5em;
+    margin-right: 1em;
+  }
+  .btn-delete-pair {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .btn-delete {
+    background-color: #ffc8c8;
+  }
+  
+  .btn-delete:hover {
+    background-color: #ff9090;
+  }
+  
+  .btn-delete-small {
+    padding: 0.15em 0.3em;
+    margin-left: 1em;
+  }
+  
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* =============================== debugging =============================== */
+  .debug {
+    border: 1px solid red;
+  }
