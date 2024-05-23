@@ -1,7 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
-
 import { ResponseView } from ".";
 
 describe("ResponseView with valid input in view mode", () => {
@@ -92,7 +91,6 @@ describe("user clicks input radio in response view mode", () => {
     it("correctly calls setSelectedId when response is clicked in view mode", async () => {
         const user = userEvent.setup();
         render(<ResponseView {...baseProps} />);
-
         const input1Radio = screen.getByRole('radio', {name: "question-4-response-1"});
         
         act(() => {

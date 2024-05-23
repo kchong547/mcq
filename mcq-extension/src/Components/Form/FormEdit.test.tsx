@@ -37,47 +37,47 @@ const sample: QuestionType = {
     },
   };
 
-  const baseProps = {
-    questionId: sample.id,
-    setQuestionId: jest.fn(), //fake function
-    questionData: sample.data,
-    setQuestionData: jest.fn(),
-    updateExtensionId: jest.fn(),
-    deleteNode: jest.fn()
-  }
+const baseProps = {
+  questionId: sample.id,
+  setQuestionId: jest.fn(), //fake function
+  questionData: sample.data,
+  setQuestionData: jest.fn(),
+  updateExtensionId: jest.fn(),
+  deleteNode: jest.fn()
+}
 
-  describe("FormEdit", () => {
-    beforeEach(() => render(<FormEdit {...baseProps} />));
+describe("FormEdit", () => {
+  beforeEach(() => render(<FormEdit {...baseProps} />));
 
-    it("renders question from prop correctly", () => {
-      const h2Elem = screen.getByRole("heading", {
-        level: 2,
-      });
-      expect(h2Elem).toBeInTheDocument();
-  
-      const questionElem = screen.getByText("This is sample question 0");
-      expect(questionElem).toBeInTheDocument();
+  it("renders question from prop correctly", () => {
+    const h2Elem = screen.getByRole("heading", {
+      level: 2,
     });
+    expect(h2Elem).toBeInTheDocument();
 
-    it("renders response list of input and labels correctly", () => {
-        const input0Elem = screen.getByLabelText("This is sample response 1", {
-          selector: "input",
-        });
-        expect(input0Elem).toBeInTheDocument();
-    
-        const input1Elem = screen.getByLabelText("This is sample response 2", {
-          selector: "input",
-        });
-        expect(input1Elem).toBeInTheDocument();
-    
-        const input2Elem = screen.getByLabelText("This is sample response 3", {
-          selector: "input",
-        });
-        expect(input2Elem).toBeInTheDocument();
-    
-        const input3Elem = screen.getByLabelText("This is sample response 4", {
-          selector: "input",
-        });
-        expect(input3Elem).toBeInTheDocument();
-      });
+    const questionElem = screen.getByText("This is sample question 0");
+    expect(questionElem).toBeInTheDocument();
+  });
+
+  it("renders response list of input and labels correctly", () => {
+    const input0Elem = screen.getByLabelText("This is sample response 1", {
+      selector: "input",
+    });
+    expect(input0Elem).toBeInTheDocument();
+
+    const input1Elem = screen.getByLabelText("This is sample response 2", {
+      selector: "input",
+    });
+    expect(input1Elem).toBeInTheDocument();
+
+    const input2Elem = screen.getByLabelText("This is sample response 3", {
+      selector: "input",
+    });
+    expect(input2Elem).toBeInTheDocument();
+
+    const input3Elem = screen.getByLabelText("This is sample response 4", {
+      selector: "input",
+    });
+    expect(input3Elem).toBeInTheDocument();
+  });
 });
