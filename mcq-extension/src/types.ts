@@ -1,19 +1,19 @@
-export interface Question {
+export interface QuestionType {
     id: string;
     data: QuestionData;
   }
   
   export interface QuestionData {
     question: string;
-    responses: Response[];
+    responses: ResponseType[];
     solutionId: string;
   }
   
-  export interface Solution {
+  export interface SolutionType {
     id: string;
   }
   
-  export interface Response {
+  export interface ResponseType {
     id: string;
     content: string;
     explanation?: string;

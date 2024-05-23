@@ -32,6 +32,7 @@ interface Props {
             type="radio"
             id={questionId + "-" + responseId}
             name={questionId}
+            aria-label={questionId + "-response-" + responseId}
             onChange={(e) => {
               setSelectedId!(responseId);
             }}
@@ -41,7 +42,8 @@ interface Props {
             disabled
             type="radio"
             id={questionId + "-" + responseId}
-            name={questionId + "-"}
+            name={questionId}
+            aria-label={questionId + "-response-" + responseId}
             checked={responseId === solutionId!}
             className="hover-editable"
           />

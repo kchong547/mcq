@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { Question } from "../../types";
+import { QuestionType } from "../../types";
 
 jest.mock("axios");
 
 import { FormEditContent } from "../Form";
 
-const sample: Question = {
+const sample: QuestionType = {
     id: "question-0",
     data: {
       question: "This is sample question 0",

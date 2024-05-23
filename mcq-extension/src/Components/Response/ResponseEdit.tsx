@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Response } from "../../types";
+import { ResponseType } from "../../types";
 
 interface Props {
   numResponses: number;
   questionId: string;
-  responseData: Response;
+  responseData: ResponseType;
   solutionId: string;
   updateResponses: (
     id: string,
@@ -39,6 +39,7 @@ export const ResponseEdit = ({
           type="radio"
           id={questionId + "-" + responseData.id}
           name={questionId}
+          aria-label={questionId + "-response-" + responseData.id}
           checked={responseData.id === solutionId}
           autoComplete="off"
           onChange={(e) => {
@@ -47,7 +48,7 @@ export const ResponseEdit = ({
           }}
         />
         <div className="response-group">
-          <label htmlFor={questionId + "-" + responseData.id}>
+          <label htmlFor={questionId + "-response-" + responseData.id}>
             <div className="btn-delete-pair">
               <input
                 className="text-box"

@@ -1,6 +1,6 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { FormEditContent } from "../Form";
-import { Question, QuestionData } from "../../types";
+import { QuestionType, QuestionData } from "../../types";
 import axios from "axios";
 
 interface Props {
@@ -53,7 +53,7 @@ export const FormEdit = ({
     }
 
     //Create new questionData to update existing question
-    const newQuestionData: Question = {
+    const newQuestionData: QuestionType = {
       id: questionId,
       data: {
         question: displayData.question,

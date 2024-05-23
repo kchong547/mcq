@@ -1,6 +1,6 @@
 import React from "react";
 import { ResponseEdit } from "../Response";
-import { QuestionData, Response } from "../../types";
+import { QuestionData, ResponseType } from "../../types";
 import { nanoid } from "nanoid";
 
 interface Props {
@@ -51,7 +51,7 @@ export const ResponseListEdit = ({
     e: React.MouseEvent<HTMLInputElement, MouseEvent>,
   ) => {
     e.preventDefault();
-    const newResponse: Response = {
+    const newResponse: ResponseType = {
       id: nanoid(), //randomly generate a responseID
       content: "",
     };
@@ -88,7 +88,7 @@ export const ResponseListEdit = ({
   };
 
   //Create list of ResponseEdit components for each response
-  const responseList = questionData.responses.map((response: Response) => (
+  const responseList = questionData.responses.map((response: ResponseType) => (
     <ResponseEdit
       numResponses={questionData.responses.length}
       questionId={questionId}

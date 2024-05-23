@@ -1,43 +1,43 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
-import { Question } from "../../types";
+import { QuestionType } from "../../types";
 
 jest.mock("axios");
 
 import { FormView } from "../Form";
 
-const sample0: Question = {
-  id: "question-0",
-  data: {
-    question: "This is sample question 0",
-    responses: [
-      {
-        id: "0",
-        content: "This is sample response 1",
-        explanation: "Here's why this ISN'T the solution",
-      },
-      {
-        id: "1",
-        content: "This is sample response 2",
-        explanation: "Here's why this IS the solution",
-      },
-      {
-        id: "2",
-        content: "This is sample response 3",
-        explanation: "Here's why this ISN'T the solution",
-      },
-      {
-        id: "3",
-        content: "This is sample response 4",
-        explanation: "Here's why this ISN'T the solution",
-      },
-    ],
-    solutionId: "1",
-  },
-};
+describe("FormView with valid sample question", () => {
+  const sample0: QuestionType = {
+    id: "question-0",
+    data: {
+      question: "This is sample question 0",
+      responses: [
+        {
+          id: "0",
+          content: "This is sample response 1",
+          explanation: "Here's why this ISN'T the solution",
+        },
+        {
+          id: "1",
+          content: "This is sample response 2",
+          explanation: "Here's why this IS the solution",
+        },
+        {
+          id: "2",
+          content: "This is sample response 3",
+          explanation: "Here's why this ISN'T the solution",
+        },
+        {
+          id: "3",
+          content: "This is sample response 4",
+          explanation: "Here's why this ISN'T the solution",
+        },
+      ],
+      solutionId: "1",
+    },
+  };
 
-describe("FormView", () => {
   beforeEach(() => render(<FormView questionId={sample0.id} questionData={sample0.data} />));
 
   it("renders question from prop correctly", () => {

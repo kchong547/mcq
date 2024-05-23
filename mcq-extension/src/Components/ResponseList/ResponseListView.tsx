@@ -1,10 +1,10 @@
 import React from "react";
 import { ResponseView, ResponseResults } from "../Response";
-import { Response } from "../../types";
+import { ResponseType } from "../../types";
 
 interface Props {
   questionId: string;
-  responses: Response[];
+  responses: ResponseType[];
   mode: "view" | "editView" | "results";
   solutionId?: string;
   selectedId?: string;
@@ -22,7 +22,7 @@ export const ResponseListView = ({
   //Generate the right response list based on given props and mode
   const generateList = (
     questionId: string,
-    responses: Response[],
+    responses: ResponseType[],
     mode: "view" | "editView" | "results",
     solutionId?: string,
     selectedId?: string,
@@ -37,7 +37,7 @@ export const ResponseListView = ({
         );
       }
 
-      return responses.map((response: Response) => (
+      return responses.map((response: ResponseType) => (
         <ResponseView
           questionId={questionId}
           responseId={response.id}
@@ -54,7 +54,7 @@ export const ResponseListView = ({
         );
       }
 
-      return responses.map((response: Response) => (
+      return responses.map((response: ResponseType) => (
         <ResponseView
           questionId={questionId}
           responseId={response.id}
@@ -73,7 +73,7 @@ export const ResponseListView = ({
         );
       }
 
-      return responses.map((response: Response) => (
+      return responses.map((response: ResponseType) => (
         <ResponseResults
           questionId={questionId}
           responseId={response.id}
