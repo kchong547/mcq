@@ -45,6 +45,7 @@ export const FormView = ({ questionId, questionData }: Props) => {
       setSubmitted(true);
     } catch (error) {
       //dont do anything if failed to send request
+      setSubmitted(true);
       return;
     }
     
