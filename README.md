@@ -4,19 +4,19 @@ Note: you must run at least mcq-extension and mcq-backend for mcq-extension to w
 
 ### mcq-backend
 cd mcq-backend<br />
-npm install
+npm install<br />
 npm start<br />
 check localhost:8080<br />
 
 ### submission storage api
 cd data-collection-api<br />
-npm install
+npm install<br />
 npm start<br />
 check localhost:8000<br />
 
 ### mcq-extension
 cd mcq-extension<br />
-npm install
+npm install<br />
 npm start<br />
 check localhost:3000<br />
 
