@@ -1,0 +1,1 @@
+<p>Welcome to the Multiple Choice Question Extension demo. Please interact with the available questions below or use "mod+enter" keys in the text editor to get started</p><multi-choice-form id="0" editable="false"></multi-choice-form><multi-choice-form id="1" editable="false"></multi-choice-form>

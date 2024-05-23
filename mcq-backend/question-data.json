@@ -1,0 +1,48 @@
+[
+  {
+      "id": "question-0",
+      "data": {
+      "question": "This is sample question 0",
+      "responses": [
+          {
+          "id": "0",
+          "content": "This is sample response 1",
+          "explanation": "Here's why this ISN'T the solution"
+          },
+          {
+          "id": "1",
+          "content": "This is sample response 2",
+          "explanation": "Here's why this IS the solution"
+          },
+          {
+          "id": "3",
+          "content": "This is sample response 3",
+          "explanation": "Here's why this ISN'T the solution"
+          },
+          {
+          "id": "4",
+          "content": "This is sample response 4",
+          "explanation": "Here's why this ISN'T the solution"
+          }
+      ],
+      "solutionId": "1"
+      }
+  },
+  {
+      "id": "question-1",
+      "data": {
+      "question": "This is sample question 1.",
+      "responses": [
+          {
+          "id": "0",
+          "content": "This is sample response 1"
+          },
+          {
+          "id": "1",
+          "content": "This is sample response 2"
+          }
+      ],
+      "solutionId": "0"
+      }
+  }
+]
