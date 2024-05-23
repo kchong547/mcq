@@ -1,6 +1,6 @@
 # How to run
-clone the repository
-Note: you must run at least mcq-extension and mcq-backend for mcq-extension to work
+clone the repository<br />
+Note: you must run at least mcq-extension and mcq-backend for mcq-extension to work<br />
 
 ### mcq-backend
 cd mcq-backend<br />
