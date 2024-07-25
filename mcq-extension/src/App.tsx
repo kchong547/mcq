@@ -8,8 +8,12 @@ import axios from "axios";
 const App = () => {
   const [editable, setEditable] = useState(false);
   const [pageContent, setPageContent] = useState(
+    // KOYL: separate large string into const
+    // const INITIAL_PAGE_CONTENT = '<p>Welcome to the Multiple Choice Question Extension demo. Type "mod+enter" in the text editor to get started</p>',
     '<p>Welcome to the Multiple Choice Question Extension demo. Type "mod+enter" in the text editor to get started</p>',
   );
+
+  const [showWarning, setShowWarning] = useState(false);
 
   const editor = useEditor(
     {
@@ -65,9 +69,12 @@ const App = () => {
     const res = await axios(configuration);
 
     if (res.status !== 200) {
-      document.getElementById("warning")!.innerText =
-        "Failed to update page information to database";
-        return;
+      // KOYL: React philosophy, we should do our best to not touch the DOM directly
+      // You could achieve a similar effect using React state
+      // document.getElementById("warning")!.innerText =
+      //   "Failed to update page information to database";
+      setShowWarning(true);
+      return;
     }
   };
 
@@ -82,10 +89,21 @@ const App = () => {
         updatePageContent={updatePageContent}
         setPageContent={setPageContent}
         setEditable={setEditable}
+        onChangePageContent={(content: string) => {
+          setPageContent(content);
+        }}
+        onChangeEditable={(editable: boolean) => {
+          setEditable(editable);
+        }}
       />
 
       <EditorContent editor={editor} />
-      <p id="warning" className="red"></p>
+      {/* KOYL: Use React state */}
+      {showWarning && (
+        <p id="warning" className="red">
+          Failed to update page information to database
+        </p>
+      )}
     </div>
   );
 };

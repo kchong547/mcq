@@ -1,8 +1,13 @@
-
 import { mergeAttributes, Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 import { MultipleChoiceForm } from "./Components";
 
+// KOYL: I don't like default exports
+// export const MultipleChoiceExtension = Node.create({...
+// ===
+// import { MultipleChoiceExtension } from './MultipleChoiceExtension
+
+// KOYL: This should be a .ts file
 export default Node.create({
   name: "multiChoiceForm",
 

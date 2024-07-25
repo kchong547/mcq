@@ -16,6 +16,9 @@ const defaultData: QuestionData = {
   solutionId: "0",
 };
 
+// KOYL: { ...props } === props
+// instead you could deconstruct the props e.g.
+// export const MultipleChoiceForm = ({ editor, node, deleteNode, ...props }) => {
 export const MultipleChoiceForm = ({ ...props }) => {
   const [editable, setEditable] = useState(props.editor.isEditable);
   const [questionId, setQuestionId] = useState("empty");

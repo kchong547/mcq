@@ -1,3 +1,6 @@
+// KOYL: The backend can be refactored a bit better
+// Though I'm not the best person to ask this
+// My strategy, chuck it into ChatGPT and let it refactor it for me LOL
 const http = require("http");
 const app = require("./app");
 

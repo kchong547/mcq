@@ -3,6 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+/* KOYL: Putting general thoughts over here...
+
+Great stab at a first run! I wasn't lying when I say this was very impressive to get working!
+Of course, there are some syntactical and logical decisions that I think we can clean up
+but we shall get there!
+
+*/
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );

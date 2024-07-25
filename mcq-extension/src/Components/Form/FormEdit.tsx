@@ -5,6 +5,7 @@ import axios from "axios";
 
 interface Props {
   questionId: string;
+  // KOYL: React philosophy...
   setQuestionId: React.Dispatch<React.SetStateAction<string>>;
   questionData: QuestionData;
   setQuestionData: React.Dispatch<React.SetStateAction<QuestionData>>;
@@ -44,6 +45,7 @@ export const FormEdit = ({
       (response) => response.id === displayData.solutionId,
     );
     if (!solution) {
+      // KOYL: shouldn't be accessing the DOM anyways, but since you are, then you should be using classes and not ids
       const submitWarning = document.getElementById(
         questionId + "-submit-warning",
       );
@@ -131,6 +133,7 @@ export const FormEdit = ({
 
   //generic function for checking if two variables are the same
   //Credit: https://stackoverflow.com/questions/37930303/comparing-two-objects-to-see-if-equal
+  // KOYL: I'm confused as to why you need this function
   const deepEqual = (a: any, b: any) => {
     //check if a and b are referring to the same thing
     if (a === b) {
@@ -163,6 +166,7 @@ export const FormEdit = ({
   };
 
   //check if there as been no changes made
+  // KOYL: this doesn't have to be a function
   const isSame = () => {
     return (
       questionData.question === displayData.question &&

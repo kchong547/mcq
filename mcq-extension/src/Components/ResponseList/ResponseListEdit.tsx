@@ -26,6 +26,7 @@ export const ResponseListEdit = ({
         if (info === "content") {
           return {
             ...response,
+            // KOYL: can be simplified to just `content`
             content: content,
           };
         } else {
@@ -115,6 +116,7 @@ export const ResponseListEdit = ({
               name="response"
               autoComplete="off"
               placeholder="Add option"
+              // KOYL: can be simplified to just `handleCreateResponse`
               onClick={(e) => handleCreateResponse(e)}
               readOnly
             />

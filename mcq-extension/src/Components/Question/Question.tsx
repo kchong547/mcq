@@ -42,6 +42,7 @@ const QuestionEdit = ({
   };
 
   return (
+    // KOYL: You don't need the empty <></>
     <>
       <input
         className="text-box"

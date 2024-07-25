@@ -10,6 +10,7 @@ interface Props {
   questionData: QuestionData;
 }
 
+//fix this
 export const FormView = ({ questionId, questionData }: Props) => {
   const [selectedId, setSelectedId] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -29,18 +30,24 @@ export const FormView = ({ questionId, questionData }: Props) => {
         return;
       }
 
-      const configuration = {
-        method: "POST",
-        url: "http://localhost:8000/record",
-        data: {
-          questionId: questionId,
-          selectedId: selectedId,
-          solutionId: questionData.solutionId,
-          responseContent: questionData.responses,
-          correct: questionData.solutionId === selectedId,
-        },
+      // KOYL: it seems there's a lot of DRY code for your api calls.
+      // Could be interesting to separate these out into a /util folder
+      const postRecord = () => {
+        const configuration = {
+          method: "POST",
+          url: "http://localhost:8000/record",
+          data: {
+            questionId: questionId,
+            selectedId: selectedId,
+            solutionId: questionData.solutionId,
+            responseContent: questionData.responses,
+            correct: questionData.solutionId === selectedId,
+          },
+        };
+        return axios(configuration);
       };
-      const res = await axios(configuration);
+
+      postRecord();
 
       setSubmitted(true);
     } catch (error) {
@@ -48,7 +55,6 @@ export const FormView = ({ questionId, questionData }: Props) => {
       setSubmitted(true);
       return;
     }
-    
   };
 
   return (

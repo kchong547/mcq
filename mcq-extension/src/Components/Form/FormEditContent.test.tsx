@@ -3,9 +3,12 @@ import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import { QuestionType } from "../../types";
 
+// KOYL: this should have been underneath the imports
 jest.mock("axios");
 
 import { FormEditContent } from "../Form";
+
+// KOYL: /nit, the test files can be reorganized into a __tests__ folder
 
 const sample: QuestionType = {
   id: "question-0",
@@ -39,18 +42,21 @@ const sample: QuestionType = {
 
 describe("FormEditContent not selected", () => {
   const notSelectedProps = {
-      questionId: sample.id,
-      questionData: sample.data,
-      setQuestionData: jest.fn(),
-      selected: false,
-      setSelected: jest.fn(),
-      handleSubmit: jest.fn(),
-      handleCancel: jest.fn(),
-      handleDelete: jest.fn()
+    questionId: sample.id,
+    questionData: sample.data,
+    setQuestionData: jest.fn(),
+    selected: false,
+    setSelected: jest.fn(),
+    handleSubmit: jest.fn(),
+    handleCancel: jest.fn(),
+    handleDelete: jest.fn(),
   };
 
   beforeEach(() => render(<FormEditContent {...notSelectedProps} />));
 
+  // KOYL: great tests! In general I don't think you need to test if
+  // every single content item is there. Just some main thing, like the title
+  // should be sufficient for a content test
   it("renders question from prop correctly", () => {
     const h2Elem = screen.getByRole("heading", {
       level: 2,
@@ -86,79 +92,97 @@ describe("FormEditContent not selected", () => {
 
 describe("FormEditContent selected", () => {
   const selectedProps = {
-      questionId: sample.id,
-      questionData: sample.data,
-      setQuestionData: jest.fn(),
-      selected: true,
-      setSelected: jest.fn(),
-      handleSubmit: jest.fn(),
-      handleCancel: jest.fn(),
-      handleDelete: jest.fn()
+    questionId: sample.id,
+    questionData: sample.data,
+    setQuestionData: jest.fn(),
+    selected: true,
+    setSelected: jest.fn(),
+    handleSubmit: jest.fn(),
+    handleCancel: jest.fn(),
+    handleDelete: jest.fn(),
   };
 
   beforeEach(() => render(<FormEditContent {...selectedProps} />));
-  
+
   it("renders question textbox from prop correctly", () => {
-    const questionInput = screen.getByRole('textbox', {name: "question"});
+    const questionInput = screen.getByRole("textbox", { name: "question" });
     expect(questionInput).toBeInTheDocument();
   });
 
   it("renders response textboxes from prop correctly", () => {
-    const response0Input = screen.getByRole('textbox', {name: "question-0-response-0"});
+    const response0Input = screen.getByRole("textbox", {
+      name: "question-0-response-0",
+    });
     expect(response0Input).toBeInTheDocument();
 
-    const response1Input = screen.getByRole('textbox', {name: "question-0-response-1"});
+    const response1Input = screen.getByRole("textbox", {
+      name: "question-0-response-1",
+    });
     expect(response1Input).toBeInTheDocument();
 
-    const response2Input = screen.getByRole('textbox', {name: "question-0-response-2"});
+    const response2Input = screen.getByRole("textbox", {
+      name: "question-0-response-2",
+    });
     expect(response2Input).toBeInTheDocument();
 
-    const response3Input = screen.getByRole('textbox', {name: "question-0-response-3"});
+    const response3Input = screen.getByRole("textbox", {
+      name: "question-0-response-3",
+    });
     expect(response3Input).toBeInTheDocument();
   });
 
   it("renders explanation textboxes from prop correctly", () => {
-    const explanation0Input = screen.getByRole('textbox', {name: "question-0-explanation-0"});
+    const explanation0Input = screen.getByRole("textbox", {
+      name: "question-0-explanation-0",
+    });
     expect(explanation0Input).toBeInTheDocument();
 
-    const explanation1Input = screen.getByRole('textbox', {name: "question-0-explanation-1"});
+    const explanation1Input = screen.getByRole("textbox", {
+      name: "question-0-explanation-1",
+    });
     expect(explanation1Input).toBeInTheDocument();
 
-    const explanation2Input = screen.getByRole('textbox', {name: "question-0-explanation-2"});
+    const explanation2Input = screen.getByRole("textbox", {
+      name: "question-0-explanation-2",
+    });
     expect(explanation2Input).toBeInTheDocument();
 
-    const explanation3Input = screen.getByRole('textbox', {name: "question-0-explanation-3"});
+    const explanation3Input = screen.getByRole("textbox", {
+      name: "question-0-explanation-3",
+    });
     expect(explanation3Input).toBeInTheDocument();
-  })
+  });
 
   it("renders cancel button correctly", () => {
-    const cancelBtnElem = screen.getByRole("button", {name: "cancel-btn"});
+    const cancelBtnElem = screen.getByRole("button", { name: "cancel-btn" });
     expect(cancelBtnElem).toBeInTheDocument();
   });
 
   it("renders save button correctly", () => {
-    const saveBtnElem = screen.getByRole("button", {name: "save-btn"});
+    const saveBtnElem = screen.getByRole("button", { name: "save-btn" });
     expect(saveBtnElem).toBeInTheDocument();
   });
 
   it("renders delete button correcty", () => {
-    const deleteBtnElem = screen.getByRole("button", {name: "delete-btn"});
+    const deleteBtnElem = screen.getByRole("button", { name: "delete-btn" });
     expect(deleteBtnElem).toBeInTheDocument();
   });
 
   it("renders response delete buttons correcty", () => {
-    const responseDeleteBtnGroup = screen.getAllByRole("button", {name: "response-delete-btn"});
+    const responseDeleteBtnGroup = screen.getAllByRole("button", {
+      name: "response-delete-btn",
+    });
     expect(responseDeleteBtnGroup).toHaveLength(4);
   });
 
   it("successfully calls handleCancel when cancel button is clicked", async () => {
     const user = userEvent.setup();
-    const cancelBtnElem = screen.getByRole("button", {name: "cancel-btn"});
+    const cancelBtnElem = screen.getByRole("button", { name: "cancel-btn" });
 
     act(() => {
       user.click(cancelBtnElem);
     });
-    
+
     await waitFor(() => {
       expect(selectedProps.handleCancel).toHaveBeenCalled();
     });
@@ -166,12 +190,12 @@ describe("FormEditContent selected", () => {
 
   it("successfully calls handleDelete when delete button is clicked", async () => {
     const user = userEvent.setup();
-    const deleteBtnElem = screen.getByRole("button", {name: "delete-btn"});
+    const deleteBtnElem = screen.getByRole("button", { name: "delete-btn" });
 
     act(() => {
       user.click(deleteBtnElem);
     });
-    
+
     await waitFor(() => {
       expect(selectedProps.handleDelete).toHaveBeenCalled();
     });
@@ -179,19 +203,18 @@ describe("FormEditContent selected", () => {
 
   it("successfully calls handlesubmit when save button is clicked", async () => {
     const user = userEvent.setup();
-    const saveBtnElem = screen.getByRole("button", {name: "save-btn"});
+    const saveBtnElem = screen.getByRole("button", { name: "save-btn" });
 
-    selectedProps.handleSubmit.mockImplementation(event => {
+    selectedProps.handleSubmit.mockImplementation((event) => {
       event.preventDefault();
     });
 
     act(() => {
       user.click(saveBtnElem);
     });
-    
+
     await waitFor(() => {
       expect(selectedProps.handleSubmit).toHaveBeenCalled();
     });
   });
-
 });
