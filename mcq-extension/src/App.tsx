@@ -25,6 +25,7 @@ const App = () => {
   );
 
   useEffect(() => {
+    // KOYL: I don't think you need this setTimeout, it can just be getPageContent()
     setTimeout(() => {
       getPageContent();
     });
