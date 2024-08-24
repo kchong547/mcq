@@ -8,9 +8,10 @@ import axios from "axios";
 interface Props {
   questionId: string;
   questionData: QuestionData;
+  updateErrorMsg: (newMsg: string) => void;
 }
 
-export const FormView = ({ questionId, questionData }: Props) => {
+export const FormView = ({ questionId, questionData, updateErrorMsg }: Props) => {
   const [selectedId, setSelectedId] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -21,11 +22,7 @@ export const FormView = ({ questionId, questionData }: Props) => {
 
       //check if selectedId is the solution
       if (selectedId === "") {
-        const noAnswerMsg = document.getElementById(
-          questionId + "-no-answer-msg",
-        );
-        noAnswerMsg!.classList.remove("hidden");
-        noAnswerMsg!.classList.add("show");
+        updateErrorMsg("Please choose a solution");
         return;
       }
 
@@ -41,10 +38,11 @@ export const FormView = ({ questionId, questionData }: Props) => {
         },
       };
       const res = await axios(configuration);
-
+      updateErrorMsg("");
       setSubmitted(true);
     } catch (error) {
       //dont do anything if failed to send request
+      updateErrorMsg("");
       setSubmitted(true);
       return;
     }
@@ -74,13 +72,9 @@ export const FormView = ({ questionId, questionData }: Props) => {
             <button type="submit" className="btn inline-btn">
               Submit
             </button>
-            <p id={questionId + "-no-answer-msg"} className="warning hidden">
-              Please select an answer!
-            </p>
           </form>
         </>
       )}
-      <p id={questionId + "-submit-warning"} className="warning hidden"></p>
     </div>
   );
 };

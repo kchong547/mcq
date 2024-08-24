@@ -42,8 +42,8 @@ describe("FormEditContent not selected", () => {
       questionId: sample.id,
       questionData: sample.data,
       setQuestionData: jest.fn(),
-      selected: false,
-      setSelected: jest.fn(),
+      selectedStatus: false,
+      updateSelected: jest.fn(),
       handleSubmit: jest.fn(),
       handleCancel: jest.fn(),
       handleDelete: jest.fn()
@@ -89,8 +89,8 @@ describe("FormEditContent selected", () => {
       questionId: sample.id,
       questionData: sample.data,
       setQuestionData: jest.fn(),
-      selected: true,
-      setSelected: jest.fn(),
+      selectedStatus: true,
+      updateSelected: jest.fn(),
       handleSubmit: jest.fn(),
       handleCancel: jest.fn(),
       handleDelete: jest.fn()

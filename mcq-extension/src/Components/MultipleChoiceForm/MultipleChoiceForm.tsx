@@ -1,9 +1,9 @@
 import { NodeViewWrapper } from "@tiptap/react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { FormEdit, FormView } from "./Form";
-import { QuestionData } from "../types";
-import "../multipleChoiceStyles.css";
+import { FormEdit, FormView } from "../Form";
+import { QuestionData } from "../../types";
+import "../../multipleChoiceStyles.css";
 
 const defaultData: QuestionData = {
   question: "",
@@ -20,6 +20,7 @@ export const MultipleChoiceForm = ({ ...props }) => {
   const [editable, setEditable] = useState(props.editor.isEditable);
   const [questionId, setQuestionId] = useState("empty");
   const [questionData, setQuestionData] = useState(defaultData);
+  const [errorMsg, setErrorMsg] = useState("");
 
   //update editable state when editor changes state
   useEffect(() => {
@@ -37,6 +38,18 @@ export const MultipleChoiceForm = ({ ...props }) => {
       id: newExtensionId,
     });
   };
+
+  const updateQuestionId = (newId : string) => {
+    setQuestionId(newId);
+  }
+
+  const updateQuestionData = (newData : QuestionData) => {
+    setQuestionData(newData);
+  }
+
+  const updateErrorMsg = (newMsg : string) => {
+    setErrorMsg(newMsg);
+  }
 
   const getQuestion = async () => {
     try {
@@ -76,15 +89,22 @@ export const MultipleChoiceForm = ({ ...props }) => {
       {editable ? (
         <FormEdit
           questionId={questionId}
-          setQuestionId={setQuestionId}
+          updateQuestionId={updateQuestionId}
           questionData={questionData}
-          setQuestionData={setQuestionData}
+          updateQuestionData={updateQuestionData}
           updateExtensionId={updateExtensionId}
           deleteNode={props.deleteNode} //from props https://github.com/ueberdosis/tiptap/discussions/1317
+          updateErrorMsg={updateErrorMsg}
         />
+        
       ) : (
-        <FormView questionId={questionId} questionData={questionData} />
+        <FormView 
+          questionId={questionId} 
+          questionData={questionData} 
+          updateErrorMsg={updateErrorMsg}
+        />
       )}
+      <p className="warning">{errorMsg}</p>
     </NodeViewWrapper>
   );
 };

@@ -1,15 +1,17 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect, useState } from "react";
-import { ModeToggleBtns } from "./Components";
+import { ModeToggleBtns } from "./Components/ModeToggleBtns";
 import MultipleChoiceExtension from "./MultipleChoiceExtension";
 import axios from "axios";
 
+/* CONSTANTS */
+const INITAL_PAGE_CONTENT = '<p>Welcome to the Multiple Choice Question Extension demo. Type "mod+enter" in the text editor to get started</p>';
+
 const App = () => {
   const [editable, setEditable] = useState(false);
-  const [pageContent, setPageContent] = useState(
-    '<p>Welcome to the Multiple Choice Question Extension demo. Type "mod+enter" in the text editor to get started</p>',
-  );
+  const [pageContent, setPageContent] = useState(INITAL_PAGE_CONTENT);
+  const [showWarning, setShowWarning] = useState(false);
 
   const editor = useEditor(
     {
@@ -21,9 +23,7 @@ const App = () => {
   );
 
   useEffect(() => {
-    setTimeout(() => {
-      getPageContent();
-    });
+    getPageContent();
   }, [editor]);
 
   //API call to retrieve stored page data from database
@@ -43,8 +43,7 @@ const App = () => {
       setPageContent(res.data.pageContent);
     } catch (error) {
       //use default pageContent value
-      document.getElementById("warning")!.innerText =
-        "Failed to retrieve page content from database";
+      setShowWarning(true);
     }
   };
 
@@ -65,10 +64,16 @@ const App = () => {
     const res = await axios(configuration);
 
     if (res.status !== 200) {
-      document.getElementById("warning")!.innerText =
-        "Failed to update page information to database";
-        return;
+      setShowWarning(true);
     }
+  };
+
+  const changeEditable = (status : boolean) => {
+    setEditable(status);
+  };
+
+  const changePageContent = (content : string) => {
+    setPageContent(content);
   };
 
   if (!editor) {
@@ -78,14 +83,15 @@ const App = () => {
   return (
     <div className="web-app">
       <ModeToggleBtns
+        editable={editable}
         editor={editor}
         updatePageContent={updatePageContent}
-        setPageContent={setPageContent}
-        setEditable={setEditable}
+        changePageContent={changePageContent}
+        changeEditable={changeEditable}
       />
 
       <EditorContent editor={editor} />
-      <p id="warning" className="red"></p>
+      {showWarning && (<p id="warning" className="red" >Failed to interact with database</p>)}
     </div>
   );
 };

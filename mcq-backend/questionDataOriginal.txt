@@ -31,7 +31,7 @@
     {
         "id": "question-1",
         "data": {
-        "question": "This is sample question 1.",
+        "question": "This is sample question 1",
         "responses": [
             {
             "id": "0",

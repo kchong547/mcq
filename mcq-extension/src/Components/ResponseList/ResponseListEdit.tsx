@@ -26,7 +26,7 @@ export const ResponseListEdit = ({
         if (info === "content") {
           return {
             ...response,
-            content: content,
+            content,
           };
         } else {
           return {
@@ -115,7 +115,7 @@ export const ResponseListEdit = ({
               name="response"
               autoComplete="off"
               placeholder="Add option"
-              onClick={(e) => handleCreateResponse(e)}
+              onClick={handleCreateResponse}
               readOnly
             />
           </label>

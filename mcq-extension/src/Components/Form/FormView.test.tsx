@@ -38,7 +38,7 @@ describe("FormView with valid sample question", () => {
     },
   };
 
-  beforeEach(() => render(<FormView questionId={sample0.id} questionData={sample0.data} />));
+  beforeEach(() => render(<FormView questionId={sample0.id} questionData={sample0.data} updateErrorMsg={jest.fn()}/>));
 
   it("renders question from prop correctly", () => {
     const h2Elem = screen.getByRole("heading", {

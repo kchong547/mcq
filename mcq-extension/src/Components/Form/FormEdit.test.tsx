@@ -1,6 +1,4 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { act } from "react-dom/test-utils";
 import { QuestionType } from "../../types";
 
 jest.mock("axios");
@@ -39,11 +37,12 @@ const sample: QuestionType = {
 
 const baseProps = {
   questionId: sample.id,
-  setQuestionId: jest.fn(), //fake function
+  updateQuestionId: jest.fn(), //fake function
   questionData: sample.data,
-  setQuestionData: jest.fn(),
+  updateQuestionData: jest.fn(),
   updateExtensionId: jest.fn(),
-  deleteNode: jest.fn()
+  deleteNode: jest.fn(),
+  updateErrorMsg: jest.fn(),
 }
 
 describe("FormEdit", () => {

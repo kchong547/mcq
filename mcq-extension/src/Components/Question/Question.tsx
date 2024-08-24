@@ -10,7 +10,6 @@ interface Props {
 interface PropsView {
   questionData: QuestionData;
 }
-
 interface PropsEdit {
   questionId: string;
   questionData: QuestionData;
@@ -42,7 +41,6 @@ const QuestionEdit = ({
   };
 
   return (
-    <>
       <input
         className="text-box"
         id={questionId + "questionEditForm"}
@@ -54,7 +52,6 @@ const QuestionEdit = ({
         value={questionData.question}
         onChange={(e) => updateQuestion(e.target.value)}
       />
-    </>
   );
 };
 

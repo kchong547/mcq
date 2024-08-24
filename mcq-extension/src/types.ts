@@ -9,7 +9,7 @@ export interface QuestionType {
     solutionId: string;
   }
   
-  export interface SolutionType {
+  export interface SolutionType { 
     id: string;
   }
   

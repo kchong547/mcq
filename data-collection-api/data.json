@@ -5,14 +5,38 @@
       {
         "submissionId": 0,
         "selectedId": 1,
-        "correct" : true
+        "correct": true
+      },
+      {
+        "submissionId": 1,
+        "selectedId": "0",
+        "correct": false
       }
     ],
-    "responseContent" : [
-      
+    "responseContent": [
+      {
+        "id": "0",
+        "content": "This is sample response 1",
+        "explanation": "Here's why this ISN'T the solution"
+      },
+      {
+        "id": "1",
+        "content": "This is sample response 2",
+        "explanation": "Here's why this IS the solution"
+      },
+      {
+        "id": "3",
+        "content": "This is sample response 3",
+        "explanation": "Here's why this ISN'T the solution"
+      },
+      {
+        "id": "4",
+        "content": "This is sample response 4",
+        "explanation": "Here's why this ISN'T the solution"
+      }
     ],
     "solutionId": "1",
-    "total": 1,
+    "total": 2,
     "num_correct": 1
   }
 ]

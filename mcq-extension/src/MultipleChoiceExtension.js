@@ -1,7 +1,6 @@
-
 import { mergeAttributes, Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import { MultipleChoiceForm } from "./Components";
+import { MultipleChoiceForm } from "./Components/MultipleChoiceForm";
 
 export default Node.create({
   name: "multiChoiceForm",
